@@ -1,11 +1,12 @@
 'use strict';
 
-var BigInteger = require('jsbn').BigInteger;
-var common = require('./common.js');
-var sprintf = require('sprintf-js').sprintf;
-var _ = require('lodash');
+import { BigInteger } from 'jsbn';
+import common from './common';
 
-var constants = require('./v4/constants.js');
+import { sprintf } from 'sprintf-js';
+import _ from 'lodash';
+
+import constants from './v4/constants';
 
 /**
  * Represents an IPv4 address
@@ -316,4 +317,4 @@ Address4.prototype.binaryZeroPad = function () {
   return _.padStart(this.bigInteger().toString(2), constants.BITS, '0');
 };
 
-module.exports = Address4;
+export default Address4

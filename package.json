@@ -10,18 +10,20 @@
   "version": "6.1.0",
   "author": "Beau Gunderson <beau@beaugunderson.com> (https://beaugunderson.com/)",
   "license": "MIT",
-  "main": "ip-address.js",
+  "main": "lib/ip-address.js",
+  "module": "es/ip-address.mjs",
   "scripts": {
-    "test": "mocha -R spec",
-    "docs": "documentation build --github --output docs --format html ./ip-address.js"
+    "test": "./node_modules/.bin/babel es --out-dir lib; mocha -R spec",
+    "docs": "documentation build --github --output docs --format html ./lib/ip-address.js",
+    "build": "./node_modules/.bin/babel es --out-dir lib"
   },
   "engines": {
     "node": ">= 0.10"
   },
   "files": [
-    "ip-address.js",
     "ip-address-globals.js",
-    "lib/**/*"
+    "lib/**/*",
+    "es/**/*"
   ],
   "repository": {
     "type": "git",
@@ -33,6 +35,9 @@
     "sprintf-js": "1.1.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "browserify": "^16.3.0",
     "chai": "^4.2.0",
     "codecov.io": "^0.1.6",

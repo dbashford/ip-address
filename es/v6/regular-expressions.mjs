@@ -1,8 +1,8 @@
 'use strict';
 
-var sprintf = require('sprintf-js').sprintf;
+import { sprintf } from 'sprintf-js';
 
-var v6 = require('./constants.js');
+import v6 from './constants';
 
 function groupPossibilities(possibilities) {
   return sprintf('(%s)', possibilities.join('|'));
@@ -97,7 +97,7 @@ function possibleElisions(elidedGroups, moreLeft, moreRight) {
  * @param {string} optionalSubString
  * @returns {string}
  */
-exports.regularExpressionString = function (optionalSubString) {
+var regularExpressionString = function (optionalSubString) {
   if (optionalSubString === undefined) {
     optionalSubString = false;
   }
@@ -147,6 +147,11 @@ exports.regularExpressionString = function (optionalSubString) {
  * @param {string} optionalSubString
  * @returns {RegExp}
  */
-exports.regularExpression = function (optionalSubstring) {
+var regularExpression = function (optionalSubstring) {
   return new RegExp(this.regularExpressionString(optionalSubstring), 'i');
 };
+
+export default {
+  regularExpressionString,
+  regularExpression
+}

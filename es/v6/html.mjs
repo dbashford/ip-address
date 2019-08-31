@@ -1,13 +1,13 @@
 'use strict';
 
-var constants4 = require('../v4/constants.js');
-var helpers = require('./helpers.js');
-var sprintf = require('sprintf-js').sprintf;
+import constants4 from '../v4/constants';
+import helpers from './helpers';
+import { sprintf } from 'sprintf-js';
 
 /**
  * @returns {String} the address in link form with a default port of 80
  */
-exports.href = function (optionalPort) {
+var href = function (optionalPort) {
   if (optionalPort === undefined) {
     optionalPort = '';
   } else {
@@ -20,7 +20,7 @@ exports.href = function (optionalPort) {
 /**
  * @returns {String} a link suitable for conveying the address via a URL hash
  */
-exports.link = function (options) {
+var link = function (options) {
   if (!options) {
     options = {};
   }
@@ -56,7 +56,7 @@ exports.link = function (options) {
  * Groups an address
  * @returns {String}
  */
-exports.group = function () {
+var group = function () {
   var address4 = this.address.match(constants4.RE_ADDRESS);
   var i;
 
@@ -105,3 +105,9 @@ exports.group = function () {
 
   return output.join(':');
 };
+
+export default {
+  group,
+  link,
+  href
+}

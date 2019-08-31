@@ -1,18 +1,18 @@
 'use strict';
 
-var sprintf = require('sprintf-js').sprintf;
+import { sprintf } from 'sprintf-js';
 
 /**
  * @returns {String} the string with all zeroes contained in a <span>
  */
-var spanAllZeroes = exports.spanAllZeroes = function (s) {
+var spanAllZeroes = function (s) {
   return s.replace(/(0+)/g, '<span class="zero">$1</span>');
 };
 
 /**
  * @returns {String} the string with each character contained in a <span>
  */
-exports.spanAll = function (s, optionalOffset) {
+var spanAll = function (s, optionalOffset) {
   if (optionalOffset === undefined) {
     optionalOffset = 0;
   }
@@ -33,7 +33,7 @@ function spanLeadingZeroesSimple(group) {
 /**
  * @returns {String} the string with leading zeroes contained in a <span>
  */
-exports.spanLeadingZeroes = function (address) {
+var spanLeadingZeroes = function (address) {
   var groups = address.split(':');
 
   return groups.map(function (g) {
@@ -45,7 +45,7 @@ exports.spanLeadingZeroes = function (address) {
  * Groups an address
  * @returns {String} a grouped address
  */
-exports.simpleGroup = function (addressString, offset) {
+var simpleGroup = function (addressString, offset) {
   var groups = addressString.split(':');
 
   if (!offset) {
@@ -62,3 +62,10 @@ exports.simpleGroup = function (addressString, offset) {
       spanLeadingZeroesSimple(g));
   }).join(':');
 };
+
+export default {
+  simpleGroup,
+  spanLeadingZeroes,
+  spanAll,
+  spanAllZeroes
+}

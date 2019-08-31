@@ -1,13 +1,15 @@
 'use strict';
 
-var BigInteger = require('jsbn').BigInteger;
-var sprintf = require('sprintf-js').sprintf;
-var _ = require('lodash');
+import { BigInteger } from 'jsbn';
+import { sprintf } from 'sprintf-js';
+import _ from 'lodash';
 
-var constants4 = require('./v4/constants.js');
-var constants6 = require('./v6/constants.js');
-
-var Address4 = require('./ipv4.js');
+import constants4 from './v4/constants';
+import constants6 from './v6/constants';
+import attributes from './v6/attributes';
+import html from './v6/html';
+import regExps from './v6/regular-expressions';
+import Address4 from './ipv4';
 
 function addCommas(number) {
   var r = /(\d+)(\d{3})/;
@@ -87,9 +89,9 @@ function Address6(address, optionalGroups) {
   this.parsedAddress = this.parse(this.addressMinusSuffix);
 }
 
-_.merge(Address6.prototype, require('./v6/attributes.js'));
-_.merge(Address6.prototype, require('./v6/html.js'));
-_.merge(Address6.prototype, require('./v6/regular-expressions.js'));
+_.merge(Address6.prototype, attributes);
+_.merge(Address6.prototype, html);
+_.merge(Address6.prototype, regExps);
 
 /**
  * Convert a BigInteger to a v6 address object
@@ -208,7 +210,7 @@ Address6.fromAddress4 = function (address4) {
  * Return an address from ip6.arpa form
  * @memberof Address6
  * @static
- * @param {string} arpaFormAddress - an 'ip6.arpa' form address 
+ * @param {string} arpaFormAddress - an 'ip6.arpa' form address
  * @returns {Adress6}
  * @example
  * var address = Address6.fromArpa(e.f.f.f.3.c.2.6.f.f.f.e.6.6.8.e.1.0.6.7.9.4.e.c.0.0.0.0.1.0.0.2.ip6.arpa.)
@@ -963,4 +965,4 @@ Address6.fromUnsignedByteArray = function (bytes) {
   return Address6.fromBigInteger(result);
 };
 
-module.exports = Address6;
+export default Address6
