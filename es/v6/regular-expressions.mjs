@@ -1,6 +1,8 @@
 'use strict';
 
-import { sprintf } from 'sprintf-js';
+import sprintfjs from 'sprintf-js';
+
+var sprintf = sprintfjs.sprintf
 
 import v6 from './constants';
 

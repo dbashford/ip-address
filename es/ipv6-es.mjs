@@ -1,7 +1,7 @@
 'use strict';
 
-import { BigInteger } from 'jsbn';
-import { sprintf } from 'sprintf-js';
+import jsbn from 'jsbn';
+import sprintfjs from 'sprintf-js';
 import _ from 'lodash';
 
 import constants4 from './v4/constants';
@@ -10,6 +10,9 @@ import attributes from './v6/attributes';
 import html from './v6/html';
 import regExps from './v6/regular-expressions';
 import Address4 from './ipv4';
+
+var BigInteger = jsbn.BigInteger;
+var sprintf = sprintfjs.sprintf;
 
 function addCommas(number) {
   var r = /(\d+)(\d{3})/;

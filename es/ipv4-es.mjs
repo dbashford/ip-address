@@ -1,12 +1,15 @@
 'use strict';
 
-import { BigInteger } from 'jsbn';
+import jsbn from 'jsbn';
 import common from './common';
 
-import { sprintf } from 'sprintf-js';
+import sprintfjs from 'sprintf-js';
 import _ from 'lodash';
 
 import constants from './v4/constants';
+
+var BigInteger = jsbn.BigInteger;
+var sprintf = sprintfjs.sprintf;
 
 /**
  * Represents an IPv4 address

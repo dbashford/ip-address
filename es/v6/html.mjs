@@ -2,7 +2,9 @@
 
 import constants4 from '../v4/constants';
 import helpers from './helpers';
-import { sprintf } from 'sprintf-js';
+import sprintfjs from 'sprintf-js';
+
+var sprintf = sprintfjs.sprintf;
 
 /**
  * @returns {String} the address in link form with a default port of 80
